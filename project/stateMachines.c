@@ -18,6 +18,10 @@ void state_advance(){
     button2();
     break;
   case 3:
+    clearScreen(COLOR_WHITE);
+    drawChar11x16(10,10,'H',COLOR_RED,COLOR_BLUE);
+    drawChar11x16(21,10,'e',COLOR_RED,COLOR_BLUE);
+    drawChar11x16(32,10,'y',COLOR_RED,COLOR_BLUE);
     button3();
     break;
   case 4: red_on =0; green_on =0;
@@ -63,15 +67,15 @@ void button2(){
 }
 
 void button3(){
-  clearScreen(COLOR_WHITE);
   static int x = 50;
   static int y =50;
   static int size = 5;
-  int j =  size;
-  drawPixel(x-j,y-j+size, COLOR_RED);//bottom left
-  drawPixel(x+j,y-j+size, COLOR_RED);//bottom right
-  drawPixel(x-j+size,y-j, COLOR_RED);//top right
-  drawPixel(x+j-size,y-j, COLOR_RED);//top left
+  for (int j =  size;j > 0;j--){
+    drawPixel(x-j,y-j+size, COLOR_RED);//bottom left
+    drawPixel(x+j,y-j+size, COLOR_RED);//bottom right
+    drawPixel(x-j+size,y-j, COLOR_RED);//top right
+    drawPixel(x+j-size,y-j, COLOR_RED);//top left
+  }
   if (size > 20){
     size = 5;
   }
